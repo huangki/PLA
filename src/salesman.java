@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class salesman {
@@ -7,6 +8,7 @@ public class salesman {
 	public static void main(String[] args) throws FileNotFoundException {
 		File f = new File("C:\\input\\hw4_2.txt");
 		Scanner in = new Scanner(f);
+		PrintWriter p = new PrintWriter("C:\\output\\99156122.txt");
 
 		int num = 0;
 		int count = 0;
@@ -30,19 +32,19 @@ public class salesman {
 				date = 0;
 			}
 		}
-		System.out.println("銷售員 " + " 星期一  " + " 星期二  " + " 星期三  " + " 星期四  "
+		p.println("銷售員 " + " 星期一  " + " 星期二  " + " 星期三  " + " 星期四  "
 				+ " 星期五  " + " 合計 ");
 		int datesum = 0;
 		for (int i = 0; i < (count / 5); i++) {
-			System.out.print(i + 1 + "    ");
+			p.print("  "+(i + 1) + "      ");
 			for (int j = 0; j < 6; j++) {
-				System.out.print(sumsale[j][i] + "   ");
+				p.print(sumsale[j][i] + "       ");
 				sumsale[5][i] += sumsale[j][i];
 			}
-			System.out.println();
+			p.println();
 		}
 		
-		System.out.print("合計      ");
+		p.print("合計     ");
 		for(int j=0;j<6;j++){
 			for(int i =0;i<count/5;i++){
 				if(j<5){
@@ -50,9 +52,9 @@ public class salesman {
 				else{
 					sumfinal[j]+=(sumsale[j][i])/2;}
 				} 
-			System.out.print(sumfinal[j]+"  ");
+			p.print(sumfinal[j]+"      ");
 			}
-			
+			p.close();
 		}
 	 
 		
